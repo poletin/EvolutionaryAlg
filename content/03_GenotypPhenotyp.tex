@@ -1,1 +1,20 @@
-\section{Genotyp und Phenotyp}\label{sec:kaptiel}
+\section{Genotyp und Phenotyp}\label{sec:genotypPhenotyp}
+\subsection{Genotyp}
+Der Genotyp ist ein Bitstring, der Beschreibt welche Lieder gespielt werden und welche nicht. 
+Dabei steht die 1 dafür, dass ein Lied ausgewählt wurde und besitzt so die Form
+\{0,1,1,1,0,0,0,1,1,1,1,...\}.
+
+\subsection{Phenotyp}
+Der Phenotyp ist die Setliste mit allen Liederobjekten und wird für die 
+Berechnung der Fitness verwendet. 
+Er besitzt neben der Stückbezeichnung alle weiteren in \autoref{sec:settings} 
+beschriebenen Eigenschaften. \autoref{lst:phenotyp} zeigt die Implementierung des Phenotyps.
+
+\lstinputlisting[
+    float,
+    floatplacement=H,
+    caption=Implementierung des Phenotyps,
+    label=lst:phenotyp
+]{phenotyp.java}
+
+\subsection{Population}
