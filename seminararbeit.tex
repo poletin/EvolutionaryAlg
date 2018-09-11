@@ -1,0 +1,88 @@
+% \documentclass[a4paper, conference, compsoc]{IEEEtran}
+\documentclass[12pt,a4paper]{article}
+% \documentclass[%
+%     pdftex,
+%     oneside,			% Einseitiger Druck.
+%     12pt,				% Schriftgroesse
+%     parskip=half,		% Halbe Zeile Abstand zwischen Absätzen.
+% %	topmargin = 10pt,	% Abstand Seitenrand (Std:1in) zu Kopfzeile [laut log: unused]
+%     headheight = 12pt,	% Höhe der Kopfzeile
+% %	headsep = 30pt,	% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
+%     headsepline,		% Linie nach Kopfzeile.
+%     footsepline,		% Linie vor Fusszeile.
+%     footheight = 16pt,	% Höhe der Fusszeile
+%     abstracton,		% Abstract Überschriften
+%     DIV=calc,		% Satzspiegel berechnen
+%     BCOR=8mm,		% Bindekorrektur links: 8mm
+%     headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
+%     footinclude=false,	% Fußzeile nicht in den Satzspiegel einbeziehen
+%     listof=totoc,		% Abbildungs-/ Tabellenverzeichnis im Inhaltsverzeichnis darstellen
+%     toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
+% ]{scrreprt}	% Koma-Script report-Klasse, fuer laengere Bachelorarbeiten alternativ auch: scrbook
+
+
+\include{settings/preamble}
+%\input{acronyms}
+\begin{document}
+
+
+\input{additionals/simpleTitle}
+% \input{additionals/deckblatt}
+
+\pagenumbering{Roman}
+
+% Sperrvermerk
+\input{additionals/sperrvermerk}
+\newpage
+
+% Erklärung
+\input{additionals/erklaerung}
+\newpage
+
+
+% \input{additionals/abstract}
+% \newpage
+
+\pagestyle{plain}		% nur Seitenzahlen im Fuß
+
+% Inhaltsverzeichnis
+\begin{spacing}{1.1}
+    \begingroup
+        \pagestyle{empty}
+        %für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+        \setcounter{tocdepth}{2}
+
+        \tableofcontents
+        \clearpage
+    \endgroup
+\end{spacing}
+\newpage
+
+% Abkürzungsverzeichnis
+\cleardoublepage
+\input{additionals/acronyms}
+
+% Abbildungsverzeichnis
+\cleardoublepage
+\listoffigures
+
+%Tabellenverzeichnis
+\cleardoublepage
+\listoftables
+
+% Quellcodeverzeichnis
+\cleardoublepage
+\lstlistoflistings
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\input{content/01_Einleitung}
+\input{content/02_Problem}
+\input{content/03_GenotypPhenotyp}
+\input{content/04_Fitness}
+\input{content/XX_Fazit}
+
+%\printacronyms{}
+\printbibliography{}
+\end{document}

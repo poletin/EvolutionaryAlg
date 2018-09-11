@@ -1,0 +1,20 @@
+\title{\myTitel}
+\author{\myAutor~(\myMatrikelnr)\\
+    \small{\myFach}\\
+    \small{\myDegree}\\
+    \small{\myInstitution}
+}
+\date{\myDatum}
+
+\begin{titlepage}
+	\begin{longtable}{p{8.2cm} p{5.4cm}}
+		% Firmenlogo
+		&
+		\includegraphics[width=5.4cm]{casLogo}
+	\end{longtable}
+	\addtocounter{table}{-1}
+    {\let\newpage\relax\maketitle}
+    \thispagestyle{empty}
+    % \vfill
+    \input{additionals/abstract}
+\end{titlepage}

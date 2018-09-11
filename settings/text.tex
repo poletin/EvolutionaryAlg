@@ -1,0 +1,109 @@
+% Colors
+\definecolor{ListingBackground}{HTML}{E6E6E6}
+\definecolor{LinkColor}{HTML}{000000}
+
+
+% Font
+\usepackage[onehalfspacing]{setspace}
+\usepackage{lmodern}
+\usepackage[official]{eurosym}
+\usepackage{enumitem}
+\usepackage[locale=DE]{siunitx} % SI Units für Währungen
+\DeclareSIUnit{\EUR}{\text{\euro}} % Beispielverwendung: \SI{10.10}{\EUR}
+
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage{url}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Additional Setup
+\usepackage[unicode=true,hypertexnames=false,colorlinks=true,linkcolor=LinkColor,citecolor=LinkColor,urlcolor=LinkColor,pdftex]{hyperref}
+
+% Trennung von URLs im Literaturverzeichnis (große Werte [> 10000] verhindern die Trennung)
+\defcounter{biburlnumpenalty}{10} % Strafe für Trennung in URL nach Zahl
+\defcounter{biburlucpenalty}{500}  % Strafe für Trennung in URL nach Großbuchstaben
+\defcounter{biburllcpenalty}{500}  % Strafe für Trennung in URL nach Kleinbuchstaben
+\interfootnotelinepenalty=10000 % prevent all footnotes from breaking over a page.
+
+% Configs
+\setcounter{tocdepth}{1} % Limit table of contents to subsection
+\sisetup{detect-weight=true, detect-family=true} % SI Units shall detect font weight and family
+\setlist[description]{style=nextline} % Break definitions of terms to a new line (used by \begin{description} \item[foo] bar \end{description})
+\renewcommand*{\bibfont}{\small}
+
+%Hurenkinder und Schusterjungen vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Quellcode
+\usepackage{listings}
+\usepackage{float}
+\usepackage{textcomp}
+\lstset{
+    inputpath=assets/listings,
+    language=Java,			% Standardsprache des Quellcodes
+    numbers=left,			% Zeilennummern links
+    stepnumber=1,			% Jede Zeile nummerieren.
+    numbersep=5pt,			% 5pt Abstand zum Quellcode
+    numberstyle=\tiny,		% Zeichengrösse 'tiny' für die Nummern.
+    breaklines=true,		% Zeilen umbrechen wenn notwendig.
+    breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
+    postbreak=\space,		% Bei Leerzeichen umbrechen.
+    tabsize=2,				% Tabulatorgrösse 2
+    basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
+    showspaces=false,		% Leerzeichen nicht anzeigen.
+    showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
+    extendedchars=true,		% Alle Zeichen vom Latin1 Zeichensatz anzeigen.
+    captionpos=b,			% sets the caption-position to bottom
+    backgroundcolor=\color{ListingBackground}, % Hintergrundfarbe des Quellcodes setzen.
+    xleftmargin=0pt,		% Rand links
+    xrightmargin=0pt,		% Rand rechts
+    frame=single,			% Rahmen an
+    frameround=ffff,
+    rulecolor=\color{darkgray},	% Rahmenfarbe
+    fillcolor=\color{ListingBackground},
+    keywordstyle=\color[rgb]{0.133,0.133,0.6},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+    float,
+    upquote=true
+}
+
+
+\colorlet{punct}{red!60!black}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    string=[s]{"}{"},
+    stringstyle=\color{numb},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\lstdefinelanguage{yaml}{
+  identifierstyle=\color{delim},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{numb},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstloadlanguages{Python,Java,bash}
