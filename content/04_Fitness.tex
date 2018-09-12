@@ -1,15 +1,59 @@
-\section{Fitnessfunktion}\label{sec:fitness}
-Die Fitnessfunktion soll die so auswählen, dass: 
+\section{Bewertung}\label{sec:fitness}
+Die Fitnessfunktion soll die so auswählen, dass:
 \begin{itemize}
-    \item Die Dauer der Stücke möglichst genau der Auftrittszeit 120 Minuten entspricht.
-    \item Die Schwierigkeit möglichst minimiert wird.
-    \item Die Stimmung und die Bekanntheit möglichst maximiert wird.
-    \item Die Anstrengung für Hochblech, Tiefblech und Holzblasinstrumente möglichst ausgeglichen ist.
+    \item Die Dauer $d$ der Stücke möglichst genau der Auftrittszeit 120 Minuten entspricht.
+    \item Die allgemeine Schwierigkeit $s$ möglichst minimiert wird. Hierbei ist zu erwähnen, dass die hier
+        angegebene Schwierigkeit nicht zwingend der Durchschnitt der Registerschwierigkeiten darstellt, denn
+        beispielsweise im Bezug auf das Zusammenspiel kann die allgemeine Schwierigkeit höher sein.
+    \item Die Stimmung $m$ und die Bekanntheit $n$ möglichst maximiert wird.
+    \item Die Schwierigkeit für Hochblech $s_{hoch}$, Tiefblech $s_{tief}$ und Holzblasinstrumente $s_{holz}$ möglichst ausgeglichen ist.
 \end{itemize}
+Um die Fitness des Phenotyps zu brechnen, müssen zunächst einige Basiswerte berechnet werden.
+Für die allgemeine Schwierigkeit sowie für die Schwierigkeiten der einzelnen Register, zeigt dies \autoref{eqn:basis}. Hierbei werden alle Werte des
+Phenotyps addiert. Durch den Bruch werden die Werte zusätzlich auf einen Wert zwischen $0$ une $1$ normiert.
+Die Formeln für $m(x)$ und $n(x)$ sind identisch.
+\begin{equation}
+    s(x) = \frac{\sum_{i=0}^{n} x_i * (10 - s(i)) }{n * 10}
+    \label{eqn:basis}
+\end{equation}
 
-\lstinputlisting[
-    float,
-    floatplacement=H,
-    caption=Implementierung der Fitnessfunktion,
-    label=lst:fitness
-]{fitness.java}
+Die Dauer sollte möglichst der geforderten Auftrittszeit entsprechen. Wird die Auftrittszeit nicht erfüllt
+oder überschritten, soll sich dies negativ auf die Fitness des Phenotyps auswirken. Aus diesem Grund wird das
+Ergebnis in \autoref{eqn:penalty} negiert. Auch in dieser Formel werden zunächst alle Differenzen zur geforderten
+Spielzeit addiert. Die Bildung des Quadrats sorgt dafür, dass sowohl unterschreiten wie auch überschreiten
+positive Werte ergibt.
+Auch in \autoref{eqn:penalty} sorgt der Bruch für eine Normierung der Werte.
+
+\begin{equation}
+    penalty(x) = -\left( \frac{\sum_{i=0}^{n}x_i * (d(i)-120)}{120}\right)^2
+    \label{eqn:penalty}
+\end{equation}
+
+Um einen Wert für die faire Verteilung der Schwierigkeit zu berechnen ist es zunächst notwendig, den Durchschnitt der
+Schwierigkeit der Register zu berechnen. Dies zeigt \autoref{enq:avg}
+
+\begin{equation}
+    avg(x) = \frac{s(x)_{hoch} + s(x)_{tief} + s(x)_{holz}}{3}
+    \label{enq:avg}
+\end{equation}
+
+Anschließend kann dieser Wert verwendet werden, um, wie in \autoref{eqn:fair} dargestellt,
+den mittleren quadratischen Fehler zu berechnen.
+\begin{equation}
+    g(x) = \frac{((avg(x) - s(x)_{hoch}) + (avg(x) - s(x)_{tief}) +(avg(x) - s(x)_{holz}))^2}{3}
+    \label{eqn:fair}
+\end{equation}
+
+Durch die Vorberechnung der einzelnen Werte ist die eigentliche Fitnessfunktion stark reduziert.
+\autoref{eqn:fitness} zeigt die Fitnessfunktion mit allen zuvor beschriebenen Kriterien.
+\begin{equation}
+    f(x) = w_p * p(x) + w_s * s(x) + w_m * m(x) + w_n * n(x) +  w_g * g(x)
+    \label{eqn:fitness}
+\end{equation}
+
+% \lstinputlisting[
+%     float,
+%     floatplacement=H,
+%     caption=Implementierung der Fitnessfunktion,
+%     label=lst:fitness
+% ]{fitness.java}

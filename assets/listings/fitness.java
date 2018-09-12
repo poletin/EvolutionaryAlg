@@ -17,25 +17,25 @@ public double fitness(BitSet bitSet) {
 	for(int i = 0, size = musicSheets.size(); i < size; i++) {
 		if(bitSet.get(i)) {
 		MusicSheet musicSheet = musicSheets.get(i);
-		totalDifficulty += (8 - musicSheet.effort)/8;
-        totalMood +=(10 - musicSheet.mood)/10;
-        totalPopularity += (10 - musicSheet.popularity)/10;
-        totalDifficultyHigh += (10 - musicSheet.difficultyHigh)/10;
-        totalDifficultyLow += (10 - musicSheet.totalDifficultyLow)/10;
-        totalDifficultyWood += (10 - musicSheet.totalDifficultyWood)/10;
+		totalDifficulty += 8 - musicSheet.effort;
+        totalMood += musicSheet.mood;
+        totalPopularity += musicSheet.popularity;
+        totalDifficultyHigh += musicSheet.difficultyHigh;
+        totalDifficultyLow += musicSheet.totalDifficultyLow;
+        totalDifficultyWood += musicSheet.totalDifficultyWood;
 		duration += musicSheet.duration;
 		}
 	}
 
 	totalDifficulty = totalDifficulty / (count * 8);
     totalMood = totalMood / (count * 10);
-    totalPopularity = totalPopularity / (count * 10);    
+    totalPopularity = totalPopularity / (count * 10);
     totalDifficultyHigh = totalDifficultyHigh / (count * 10);
     totalDifficultyLow = totalDifficultyLow / (count * 10);
     totalDifficultyWood = totalDifficultyWood / (count * 10);
 
-	double penalty = -Math.abs(duration - 60)/60; 
-    double averageDifficulty = (totalDifficultyHigh + totalDifficultyLow + totalDifficultyWood)/3; 
+	double penalty = -Math.abs(duration - 120)/120;
+    double averageDifficulty = (totalDifficultyHigh + totalDifficultyLow + totalDifficultyWood)/3;
     double equality = Math.abs(averageDifficulty - totalDifficultyHigh) + Math.abs(averageDifficulty - totalDifficultyLow) + Math.abs(averageDifficulty - totalDifficultyWood);
 	double fitness = difficultyWeight * totalDifficulty + penaltyWeight *penalty + equalityWeight * equality ;
 	return fitness;

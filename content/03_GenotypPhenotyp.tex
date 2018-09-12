@@ -1,19 +1,28 @@
 \section{Genotyp und Phenotyp}\label{sec:genotypPhenotyp}
 \subsection{Genotyp}
-Der Genotyp ist ein Bitstring, der Beschreibt welche Lieder gespielt werden und welche nicht. 
+Der Genotyp ist ein Bitstring, der Beschreibt welche Lieder gespielt werden und welche nicht.
 Dabei steht die 1 dafür, dass ein Lied ausgewählt wurde und besitzt so die Form
-\{0,1,1,1,0,0,0,1,1,1,1,...\}.
+
+\begin{equation}
+    \label{eqn:genotyp}
+    \begin{split}
+        x_i &\in \{ 0,1 \} \\
+        x_i &= 1 \Rightarrow \text{Stück $i$ wird in die Setliste aufgenommen} \\
+        x   &= x_1x_2...x_n \in \{0,1\}^n\text{ mit $n = $ Anzahl der gespielten Stücke}
+    \end{split}
+\end{equation}
 
 \subsection{Phenotyp}
-Der Phenotyp ist die Setliste mit allen Liederobjekten und wird für die 
-Berechnung der Fitness verwendet. 
-Er besitzt neben der Stückbezeichnung alle weiteren in \autoref{sec:settings} 
-beschriebenen Eigenschaften. \autoref{lst:phenotyp} zeigt die Implementierung des Phenotyps.
+Der Phenotyp ist die Setliste mit allen Liederobjekten und wird für die
+Berechnung der Fitness verwendet.
+Er besitzt neben der Stückbezeichnung alle weiteren in \autoref{sec:settings}
+beschriebenen Eigenschaften. \autoref{lst:phenotyp} zeigt die Implementierung der Klasse
+eines Phenotyps.
 
 \lstinputlisting[
     float,
     floatplacement=H,
-    caption=Implementierung des Phenotyps,
+    caption=Klasse für einen Phenotyp,
     label=lst:phenotyp
 ]{phenotyp.java}
 
