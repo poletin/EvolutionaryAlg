@@ -1,16 +1,66 @@
 \section{Mutationen}\label{sec:mutation}
 Um neue Lösungen zu finden, werden die Eltern nicht nur kombiniert sondern auch zu
-einer gewissen Wahrscheinlichkeit Mutiert.
-\subsection{Flip}
-Ein Wert ändern
-Nachteil: hohe Wahrscheinlichkeit dass sich die Anstrengung erhöht/verringert und die Dauer zu kurz zu lang
-deshalb macht es keinen Sinn nur ein Bit zu flippen.
+einer gewissen Wahrscheinlichkeit Mutiert. Doch nicht jede Mutation ist für das Konzertproblem 
+sinnvoll. 
+\subsection{Analyse verschiedener Mutationen}
+\paragraph{Flip}
+Bei dieser Mutation wird der Wert eines Bits verändert. Auf dieses Problem bezogen, 
+bedeutet dies, dass ein Stück in die Setliste mit aufgenommen oder aus 
+der Setliste gestrichen wird. 
+\begin{enumerate}
+    \item Entfernen eines Stückes: 
+    \begin{itemize}
+        \item Die Dauer des Auftritts wird kürzer, dies hat sehr wahrscheinlich eine Bestrafung und 
+            damit eine Reduzierung der Fitness zur Folge. 
+        \item Die Schwierigkeiten $s, s_{hoch}$, $ s_{tief}$ und $s_{holz}$ sinken ebenso. Dies sorgt allerdings 
+            zu einer Steigerung der Fitness. 
+    \end{itemize}
+    \item Hinzufügen eines Stückes:
+    \begin{itemize}
+        \item Die Dauer des Auftritts wird länger, auch dies hat eine Reduzierung der Fitness zu Folge.
+        \item Die Schwierigkeiten $s, s_{hoch}$, $ s_{tief}$ und $s_{holz}$ steigen ebenso, was auch zur Reduzierung 
+            der Fitness führt. 
+    \end{itemize}
+\end{enumerate}
+Dies bedeutet, dass die Fitness nach einem Flip nur steigen kann, wenn ein kurzes aber schwieriges Stück aus 
+der Setliste entfernt wird. Allerdings könnte eine zunächst schlechtere Fitness den Algorithmus aus 
+einem lokalen Optimum befreien.
 
-Werden meherere Bits geflipt so erhöht sich die Wahrscheinlichkeit, dass
-\subsection{Swap}
-Austausch von WErten an zwei positionen
-Nachteil: wenn die Werte gleich sind, gibt es keine Mutation
-\subsection{Insert}
-\subsection{Shuffel}
+\paragraph{Swap}
+Beim Swap werden die Positionen von zwei Bits vertauscht. 
+Daraus ergeben sich folgende Möglichkeiten für das Konzertproblem. 
+\begin{enumerate}
+    \item Fall \{$1 \longleftrightarrow 1$\}: Beide Stücke verbleiben in der Setliste.
+    \item Fall \{$0 \longleftrightarrow 1$\} : Ein Stück wird von der Setliste gestrichen, dafür wird ein anderes Stück aufgenommen.
+    \item Fall \{$0 \longleftrightarrow 0$\} : Beide Stücke sind nicht auf der Setliste.
+\end{enumerate}
 
-Gleiche Anzahl an Stücken nur andere Reihenfolge
+Fall 1 und Fall 3 sorgen weder für eine Verschlechterung noch zu einer Verbesserung. Dennoch sollten diese 
+Fälle vermieden werden, da auch keine Mutation stattfindet. \\
+Denkbar wäre es die zufällige Wahl der beiden Bits zu manipulieren. Das erste Bit wird aus der Menge der 
+von der Setliste ausgeschlossenen Stücke gewählt und das zweite Bit aus der Menge der Setliste. 
+Somit würde gewährleistet werden, dass bei jeder Swap-Mutation eine echte Mutation stattfindet. 
+Der Austausch eines Stückes auf der Setliste mit einem anderen, ist für das Konzertproblem sehr sinnvoll, 
+da die Dauer nur um die Differenz der Stückdauer verändert wird und nicht wie im Fall eines Flips um die gesamte
+Länge eines Stückes. \\
+Der Algorithmus hat durch den Swap die Möglichkeit die Population zu verbessern oder zu verschlechtern. 
+Beide Fälle können sich positiv auf die Fitness des Ergebnisses auswirken. AUs diesem Grund 
+wird der Swap für das Konzertproblem sinnvoll eingesetzt. 
+
+\paragraph{Shuffel}
+Beim Shuffel werden alle Werte neu vermischt, daher sorgt auch der Shuffel für eine gleichbleibende Anzahl an Stücken.
+Der Unterschied ist der Umfang. Es wird nicht nur ein Stück ausgetauscht, sondern sehr viele. 
+Das bedeutet, dass diese Mutation eine Starke änderung des Genotyps zur Folge hat. \\
+
+Alle drei Mutationen haben ihre Berechtigung zur Lösung des Konzertproblems. Allerdings sollte 
+der Flip nicht so oft sattfinden wie der Swap, da dieser die Fitness positiver beeinflusst. 
+Dies kann mit hilfe von Wahrscheinlichkeiten erreicht werden. Eine Zufallszahl kann die Wahrscheinlichkeit 
+für das Stattfinden einer Mutation bestimmen. 
+Als initiale Einstellung könnten die Wahrscheinlichkeiten wie folgt gewählt werden: 
+\begin{enumerate}
+    \item $50\%$: Swap
+    \item $25\%$: keine Mutation
+    \item $20\%$: Shuffel
+    \item $5\%$: Flip
+\end{enumerate}
+Diese Rangordnung sorgt dafür, dass die Wahrscheinlichste Mutation ein Swap ist und ein Flip eher selten ausgeführt wird.
