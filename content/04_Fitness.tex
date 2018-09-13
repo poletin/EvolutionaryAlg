@@ -8,7 +8,8 @@ Die Fitnessfunktion soll die so auswählen, dass:
     \item Die Stimmung $m$ und die Bekanntheit $n$ möglichst maximiert wird.
     \item Die Schwierigkeit für Hochblech $s_{hoch}$, Tiefblech $s_{tief}$ und Holzblasinstrumente $s_{holz}$ möglichst ausgeglichen ist.
 \end{itemize}
-Um die Fitness des Phenotyps zu brechnen, müssen zunächst einige Basiswerte berechnet werden.
+Um die Fitness des Phenotyps zu brechnen, müssen zunächst einige Basiswerte berechnet werden. Diese ist in \autoref{lst:basisWerte}
+
 Für die allgemeine Schwierigkeit sowie für die Schwierigkeiten der einzelnen Register, zeigt dies \autoref{eqn:basis}. Hierbei werden alle Werte des
 Phenotyps addiert. Durch den Bruch werden die Werte zusätzlich auf einen Wert zwischen $0$ une $1$ normiert.
 Die Formeln für $m(x)$ und $n(x)$ sind identisch.
@@ -17,13 +18,14 @@ Die Formeln für $m(x)$ und $n(x)$ sind identisch.
     \label{eqn:basis}
 \end{equation}
 
-Die Dauer sollte möglichst der geforderten Auftrittszeit entsprechen. Wird die Auftrittszeit nicht erfüllt
-oder überschritten, soll sich dies negativ auf die Fitness des Phenotyps auswirken. Aus diesem Grund wird das
+Eine Nebenbedingung ist die Dauer. Sie sollte möglichst der geforderten Auftrittszeit entsprechen. Wird die Auftrittszeit nicht erfüllt
+oder überschritten, soll sich dies negativ auf die Fitness des Phenotyps auswirken. Die Fitness soll nicht direkt auf 0 gesetzt werden, da
+Beispielsweise eine Setliste deren Dauer um eine Minute die geforderte Auftrittszeit unterschreitet besser sein kann als das Überschreiten von 10 Minuten.
+Aus diesem Grund wird das
 Ergebnis in \autoref{eqn:penalty} negiert. Auch in dieser Formel werden zunächst alle Differenzen zur geforderten
-Spielzeit addiert. Die Bildung des Quadrats sorgt dafür, dass sowohl unterschreiten wie auch überschreiten
+Spielzeit aufaddiert. Die Bildung des Quadrats sorgt dafür, dass sowohl unterschreiten wie auch überschreiten
 positive Werte ergibt.
 Auch in \autoref{eqn:penalty} sorgt der Bruch für eine Normierung der Werte.
-
 \begin{equation}
     penalty(x) = -\left( \frac{\sum_{i=0}^{n}x_i * (d(i)-120)}{120}\right)^2
     \label{eqn:penalty}
@@ -31,7 +33,6 @@ Auch in \autoref{eqn:penalty} sorgt der Bruch für eine Normierung der Werte.
 
 Um einen Wert für die faire Verteilung der Schwierigkeit zu berechnen ist es zunächst notwendig, den Durchschnitt der
 Schwierigkeit der Register zu berechnen. Dies zeigt \autoref{enq:avg}
-
 \begin{equation}
     avg(x) = \frac{s(x)_{hoch} + s(x)_{tief} + s(x)_{holz}}{3}
     \label{enq:avg}
@@ -44,6 +45,15 @@ den mittleren quadratischen Fehler zu berechnen.
     \label{eqn:fair}
 \end{equation}
 
+\lstinputlisting[
+    float=h,
+    floatplacement=H,
+    firstline=16,
+    lastline=39,
+    caption=Berechnung der Basiswerte,
+    label=lst:basisWerte
+]{fitness.java}
+
 Durch die Vorberechnung der einzelnen Werte ist die eigentliche Fitnessfunktion stark reduziert.
 \autoref{eqn:fitness} zeigt die Fitnessfunktion mit allen zuvor beschriebenen Kriterien.
 \begin{equation}
@@ -51,9 +61,14 @@ Durch die Vorberechnung der einzelnen Werte ist die eigentliche Fitnessfunktion 
     \label{eqn:fitness}
 \end{equation}
 
-% \lstinputlisting[
-%     float,
-%     floatplacement=H,
-%     caption=Implementierung der Fitnessfunktion,
-%     label=lst:fitness
-% ]{fitness.java}
+\lstinputlisting[
+    float = h,
+    floatplacement=H,
+    firstline=40,
+    lastline=40,
+    caption=Fitnessfunktion,
+    label=lst:basisWerte
+]{fitness.java}
+
+Die Gewichtung der Merkmale in der Fitnessfunktion beeinflusst das Ergebnis der Fitnessfunktion und
+ist notwendig, da 

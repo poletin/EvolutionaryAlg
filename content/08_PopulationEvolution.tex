@@ -1,0 +1,43 @@
+\section{Population und Evolution}\label{sec:popEv}
+\subsection{Initialisierung der Population}
+Die Initialisierung der Population kann entweder zufällig oder anhand von bereits vorhandenem Wissen.
+In der Regel bietet es sich nicht an, die kompletete Population anhand von Wissen aufzubauen, da so
+wenig neue Lösungen gefunden werden.\\
+Dennoch wäre es in dieser Anwendung möglich einige vorhandene Setlisten in die Population einzustreuen und den Rest
+anschließend mit zufälligen Werten zu füllen.
+
+\subsection{Populationsgröße}
+Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer weiße werden Werte zwischen
+20 und 30 gewählt. Diese kann später via \textit{Trial-and-Error} optimiert werden.
+
+\subsection{Übersicht über den Algorithmus und die Evolution}
+
+\begin{itemize}
+    \item Zunächst wird die Population initialisiert.
+    \item Anschließend wird die Fitness der einzelnen Chromosome anhand der in \autoref{sec:fitness} beschriebenen
+        Formeln berechnet.
+    \item Die Gene werden mithilfe der in \autoref{sec:eltern} beschriebenen Algorithmen selektiert und anschließend
+        kombiniert.
+    \item Nach der Kombination folgt die Mutation, die zufällig eine der in \autoref{sec:mutation} vorgestellten
+    Mutationen auswählt.
+    \item Der gesamte Algorithmus endet, die Abbruchbedingung siehe \autoref{subsec:Abbruchbedingung} erfüllt ist.
+\end{itemize}
+
+\subsection{Abbruchbedingung}\label{subsec:Abbruchbedingung}
+Damit der Algorithmus irgendwan endet muss eine Abbruchbedingung definiert werden.
+Hierzu gibt es verschiedene Möglichkeiten die auch kombiniert werden können:
+\begin{itemize}
+    \item Abbruch, falls in den letzen $n$ Wiederholungen keine Verbesserung stattfand.
+    \item Abbruch, falls $n$ Wiederholungen beendet wurden.
+    \item Abbruch, falls ein bestimmter Zielwert erreicht wurde.
+\end{itemize}
+
+\autoref{lst:abbruch} zeit die Java-Implementierung einer Abbruchfunktion die alle Drei Möglichkeiten
+kombiniert. Die Maximale Anzahl an Wiederholungen wird durch die \textit{For-Schleife} eingehalten.
+Die beiden anderen Bedingungen werden innerhalb der Schleife überprüft.
+\lstinputlisting[
+    float = h,
+    floatplacement=H,
+    caption=Abbruchfunktion,
+    label=lst:abbruch
+]{abbruch.java}

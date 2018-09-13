@@ -107,3 +107,16 @@
 }
 
 \lstloadlanguages{Python,Java,bash}
+
+\usepackage[german,onelanguage,linesnumbered,ruled]{algorithm2e}
+% Styling Kommentar
+\newcommand\mycommfont[1]{\color{gray}\ttfamily{#1}}
+\SetCommentSty{mycommfont}
+
+% Runde Klammern um Bedingungen
+\SetKwIF{If}{ElseIf}{Else}{wenn~(}{)~dann}{sonst wenn}{dann}{Ende}
+\SetKwFor{ForEach}{für jedes~(}{)~tue}{Ende}
+
+%Eingabe und Ausgabe Texte
+\SetKwInOut{Input}{Eingabe}
+\SetKwInOut{Output}{Ausgabe}

@@ -27,7 +27,7 @@ public double fitness(BitSet bitSet) {
 		}
 	}
 
-	totalDifficulty = totalDifficulty / (count * 8);
+	totalDifficulty = totalDifficulty / (count * 10);
     totalMood = totalMood / (count * 10);
     totalPopularity = totalPopularity / (count * 10);
     totalDifficultyHigh = totalDifficultyHigh / (count * 10);
