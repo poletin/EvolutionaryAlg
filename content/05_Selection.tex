@@ -1,7 +1,6 @@
-\section{Kombination und Selektion}\label{sec:eltern}
-\subsection{Kombination}
-Da die länge des Genstringst in diesem Beispiel sehr lange ist, bietet es sich an einen Multi-Point-Crossover zu verwenden.
-Dabei werden die beiden Eltern an $n$ zufällig gewählten Stellen geterennt und auf zwei neue Genstrings aufgeteilt.
+\section{Kombination}\label{sec:eltern}
+Da die der Genstring in diesem Konzertproblem sehr lange ist, bietet es sich an einen Multi-Point-Crossover zu verwenden.
+Dabei werden die beiden Eltern an $n$ zufällig gewählten Stellen getrennt und auf zwei neue Genstrings aufgeteilt.
 \autoref{img:multiCrossover} zeigt anschaulich wie ein 3-Point-Crossover funktioniert. An je mehr Punkten
 der Genstring geteilt und wieder zusammengesetz wird desto einen großeren Unterschied besitzen die Kinder von
 den Eltern. Das Crossover an 3 Punkten bietet sich in dieser Anwendung an, da so der Unterschied nicht zu groß aber auch nicht zu klein ist.
@@ -15,7 +14,7 @@ den Eltern. Das Crossover an 3 Punkten bietet sich in dieser Anwendung an, da so
     \end{minipage}
 \end{figure}
 
-\subsection{Selektion}
+\section{Selektion}
 Für die Selektion der Eltern bietet sich die Tournament Selection an.
 Diese wählt zufällig mehrere Chromosome aus und selektiert das Chromosom mit der besten Fitness. Das Verfahren der
 Tournament Selection ist in \autoref{img:tournament} dargestellt.
