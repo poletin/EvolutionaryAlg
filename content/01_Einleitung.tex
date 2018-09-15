@@ -1,13 +1,15 @@
 \section{Einleitung}\label{sec:einleitung}
 In einem kleinen Ensemble mit regelmäßigen Auftritten, kommt es immer wieder zu Diskussionen 
-bezüglich der Setliste. Neben der Länge des Musikstückes sind bei der Auswahl der Stücke einige 
+bezüglich der Setliste. Neben der Dauer des Musikstückes sind bei der Auswahl der Stücke einige 
 weitere Eigenschaften zu beachten. Eines ist beispielsweise die Anstrengung für das Hochblech. 
 Besonders bei langen Auftritten, ist es wichtig nicht zu viele Stücke auszuwählen, die 
 für einzelne Register besonders anstrengend sind. Die Anstrengung soll für alle Register ausgeglichen sein.
 \subsection{Beschreibung des Problems}
  Dieser Programmentwurf, stellt die Basis für ein System dar, dass anhand verschiedener Kriterien eine 
- Auswahl von Stücken zusammenstellt, die möglichst alle Kriterien optimiert und dabei die 
- geforderte Auftrittszeit möglichst nicht unterschreitet oder überzieht. Diese Problemstellung lehnt somit an das \textit{Knappsack-Problem} an, 
+ Auswahl von Stücken zusammenstellt, die möglichst die Kriterien \emph{Schwierigkeit, Bekanntheit, Stimmung} optimiert und dabei die 
+ geforderte Auftrittszeit möglichst nicht unterschreitet oder überzieht. Die Kriterien werden in \autoref{sec:fitness} genauer 
+ beschrieben.\\
+ Diese Problemstellung lehnt somit an das \textit{Knappsack-Problem} an, 
  da der Fokus auf der Auswahl der Stücke liegt und nicht auf der Reihenfolge.
  
 \subsection{Kurze Beschreibung des Ensembles}
@@ -20,6 +22,6 @@ Das Ensemble besteht aus:
     \item 1 Schlagzeug 
 \end{itemize} 
 
-Für einen Auftritt stehen ** Stücke zur Verfügung die zusammengestellt werden können. Dabei ist zu erwähnen, dass keines
+Für einen Auftritt stehen 73 Stücke zur Verfügung die zusammengestellt werden können. Dabei ist zu erwähnen, dass keines
 der Stücke bei einem Auftritt nicht gespielt werden kann, da die Stücke bereits für die Auftritte angepasst sind.
 Die Auftritte haben eine Dauer von 120 Minuten.

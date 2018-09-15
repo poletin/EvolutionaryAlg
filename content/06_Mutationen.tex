@@ -1,8 +1,8 @@
 \section{Mutationen}\label{sec:mutation}
 Um neue Lösungen zu finden, werden die Eltern nicht nur kombiniert sondern auch zu
-einer gewissen Wahrscheinlichkeit Mutiert. Doch nicht jede Mutation ist für das Konzertproblem 
+einer gewissen Wahrscheinlichkeit mutiert. Doch nicht jede Mutation ist für das Konzertproblem 
 sinnvoll. 
-\subsection{Analyse verschiedener Mutationen}
+\subsection{Analyse und Beschreibung verschiedener Mutationen}
 \paragraph{Flip}
 Bei dieser Mutation wird der Wert eines Bits verändert. Auf dieses Problem bezogen, 
 bedeutet dies, dass ein Stück in die Setliste mit aufgenommen oder aus 
@@ -36,7 +36,7 @@ Daraus ergeben sich folgende Möglichkeiten für das Konzertproblem.
 \end{enumerate}
 
 Fall 1 und Fall 3 sorgen weder für eine Verschlechterung noch zu einer Verbesserung. Dennoch sollten diese 
-Fälle vermieden werden, da auch keine Mutation stattfindet. \\
+Fälle vermieden werden, da keine echte Mutation stattfindet. \\
 Denkbar wäre es die zufällige Wahl der beiden Bits zu manipulieren. Das erste Bit wird aus der Menge der 
 von der Setliste ausgeschlossenen Stücke gewählt und das zweite Bit aus der Menge der Setliste. 
 Somit würde gewährleistet werden, dass bei jeder Swap-Mutation eine echte Mutation stattfindet. 
@@ -44,13 +44,13 @@ Der Austausch eines Stückes auf der Setliste mit einem anderen, ist für das Ko
 da die Dauer nur um die Differenz der Stückdauer verändert wird und nicht wie im Fall eines Flips um die gesamte
 Länge eines Stückes. \\
 Der Algorithmus hat durch den Swap die Möglichkeit die Population zu verbessern oder zu verschlechtern. 
-Beide Fälle können sich positiv auf die Fitness des Ergebnisses auswirken. AUs diesem Grund 
+Beide Fälle können sich positiv auf die Fitness des Endergebnisses auswirken. Aus diesem Grund 
 wird der Swap für das Konzertproblem sinnvoll eingesetzt. 
 
 \paragraph{Shuffel}
 Beim Shuffel werden alle Werte neu vermischt, daher sorgt auch der Shuffel für eine gleichbleibende Anzahl an Stücken.
-Der Unterschied ist der Umfang. Es wird nicht nur ein Stück ausgetauscht, sondern sehr viele. 
-Das bedeutet, dass diese Mutation eine Starke änderung des Genotyps zur Folge hat. \\
+Der Unterschied zum \emph{Swap} ist der Umfang. Es wird nicht nur ein Stück ausgetauscht, sondern sehr viele. 
+Das bedeutet, dass diese Mutation eine starke Änderung des Genotyps zur Folge hat. \\
 
 Alle drei Mutationen haben ihre Berechtigung zur Lösung des Konzertproblems. Allerdings sollte 
 der Flip nicht so oft sattfinden wie der Swap, da dieser die Fitness positiver beeinflusst. 
@@ -63,4 +63,4 @@ Als initiale Einstellung könnten die Wahrscheinlichkeiten wie folgt gewählt we
     \item $20\%$: Shuffel
     \item $5\%$: Flip
 \end{enumerate}
-Diese Rangordnung sorgt dafür, dass die Wahrscheinlichste Mutation ein Swap ist und ein Flip eher selten ausgeführt wird.
+Diese Rangordnung sorgt dafür, dass die wahrscheinlichste Mutation ein Swap ist und ein Flip eher selten ausgeführt wird.

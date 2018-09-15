@@ -8,7 +8,7 @@ anschließend mit zufälligen Werten zu füllen.
 
 \subsection{Populationsgröße}
 Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer weiße werden Werte zwischen
-20 und 30 gewählt. Diese kann später via \textit{Trial-and-Error} optimiert werden.
+20 und 30 gewählt. Diese kann später via \textit{Trial-and-Error} und einem Prototypen optimiert werden.
 
 \subsection{Übersicht über den Algorithmus und die Evolution}
 
@@ -20,15 +20,15 @@ Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer wei�
         kombiniert.
     \item Nach der Kombination folgt die Mutation, die zufällig eine der in \autoref{sec:mutation} vorgestellten
     Mutationen auswählt.
-    \item Der gesamte Algorithmus endet, die Abbruchbedingung siehe \autoref{subsec:Abbruchbedingung} erfüllt ist.
+    \item Der gesamte Algorithmus endet, wenn die Abbruchbedingung siehe \autoref{subsec:Abbruchbedingung} erfüllt ist.
 \end{itemize}
 
 \subsection{Abbruchbedingung}\label{subsec:Abbruchbedingung}
-Damit der Algorithmus irgendwan endet muss eine Abbruchbedingung definiert werden.
-Hierzu gibt es verschiedene Möglichkeiten die auch kombiniert werden können:
+Damit der Algorithmus endet muss eine Abbruchbedingung definiert werden.
+Hierzu gibt es verschiedene Möglichkeiten die kombiniert werden können:
 \begin{itemize}
     \item Abbruch, falls in den letzen $n$ Wiederholungen keine Verbesserung stattfand.
-    \item Abbruch, falls $n$ Wiederholungen beendet wurden.
+    \item Abbruch, falls $n$ Wiederholungen ausgeführt wurden.
     \item Abbruch, falls ein bestimmter Zielwert erreicht wurde.
 \end{itemize}
 

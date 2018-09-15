@@ -1,14 +1,14 @@
 \section{Bewertung}\label{sec:fitness}
 Die Fitnessfunktion soll die Stücke der Setliste so auswählen, dass:
 \begin{itemize}
-    \item Die Dauer $d$ der Stücke möglichst genau der Auftrittszeit 120 Minuten entspricht.
-    \item Die allgemeine Schwierigkeit $s$ möglichst minimiert wird. Hierbei ist zu erwähnen, dass die hier
+    \item Die Dauer $d$ der Stücke \textbf{möglichst genau} der Auftrittszeit 120 Minuten entspricht.
+    \item Die allgemeine Schwierigkeit $s$ \textbf{möglichst minimiert} wird. Hierbei ist zu erwähnen, dass die hier
         angegebene Schwierigkeit nicht zwingend der Durchschnitt der Registerschwierigkeiten darstellt, denn
         beispielsweise im Bezug auf das Zusammenspiel kann die allgemeine Schwierigkeit höher sein.
-    \item Die Stimmung $m$ und die Bekanntheit $n$ möglichst maximiert wird.
-    \item Die Schwierigkeit für Hochblech $s_{hoch}$, Tiefblech $s_{tief}$ und Holzblasinstrumente $s_{holz}$ möglichst ausgeglichen ist.
+    \item Die Stimmung $m$ und die Bekanntheit $n$ \textbf{möglichst maximiert} wird.
+    \item Die Schwierigkeit für Hochblech $s_{hoch}$, Tiefblech $s_{tief}$ und Holzblasinstrumente $s_{holz}$ \textbf{möglichst ausgeglichen} ist.
 \end{itemize}
-Um die Fitness des Phenotyps zu bestimmen, müssen zunächst einige Basiswerte berechnet werden. Diese sind in \autoref{lst:basisWerte} implementiert.
+Um die Fitness des Phenotyps zu bestimmen, müssen zunächst einige Basiswerte berechnet werden. Diese sind in \autoref{lst:basisWerte} beispielhaft implementiert.
 
 Für die allgemeine Schwierigkeit sowie für die Schwierigkeiten der einzelnen Register, zeigt \autoref{eqn:basis} die Berechnungsformel. Hierbei werden alle Werte des
 Phenotyps addiert. Durch den Bruch werden die Werte zusätzlich auf einen Wert zwischen $0$ une $1$ normiert. Dies ist notwendig, 
@@ -67,7 +67,7 @@ Durch die Vorberechnung der einzelnen Werte ist die eigentliche Fitnessfunktion 
     firstline=40,
     lastline=40,
     caption=Fitnessfunktion,
-    label=lst:basisWerte
+    label=lst:fitness
 ]{fitness.java}
 
 Die Gewichtung der Merkmale in der Fitnessfunktion beeinflusst das Ergebnis der Fitnessfunktion und
