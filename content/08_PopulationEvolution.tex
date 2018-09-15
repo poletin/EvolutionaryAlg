@@ -1,16 +1,16 @@
 \section{Population und Evolution}\label{sec:popEv}
-\subsection{Initialisierung der Population}
+\paragraph{Initialisierung der Population}
 Die Initialisierung der Population kann entweder zufällig oder anhand von bereits vorhandenem Wissen.
-In der Regel bietet es sich nicht an, die kompletete Population anhand von Wissen aufzubauen, da so
+In der Regel bietet es sich nicht an, die gesamte Population anhand von Wissen aufzubauen, da so
 wenig neue Lösungen gefunden werden.\\
 Dennoch wäre es in dieser Anwendung möglich einige vorhandene Setlisten in die Population einzustreuen und den Rest
 anschließend mit zufälligen Werten zu füllen.
 
-\subsection{Populationsgröße}
+\paragraph{Populationsgröße}
 Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer weiße werden Werte zwischen
 20 und 30 gewählt. Diese kann später via \textit{Trial-and-Error} und einem Prototypen optimiert werden.
 
-\subsection{Übersicht über den Algorithmus und die Evolution}
+\paragraph{Übersicht über den Algorithmus und die Evolution}
 
 \begin{itemize}
     \item Zunächst wird die Population initialisiert.
@@ -20,14 +20,14 @@ Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer wei�
         kombiniert.
     \item Nach der Kombination folgt die Mutation, die zufällig eine der in \autoref{sec:mutation} vorgestellten
     Mutationen auswählt.
-    \item Der gesamte Algorithmus endet, wenn die Abbruchbedingung siehe \autoref{subsec:Abbruchbedingung} erfüllt ist.
+    \item Der gesamte Algorithmus endet, wenn die Abbruchbedingung siehe \autoref{para:Abbruchbedingung} erfüllt ist.
 \end{itemize}
 
-\subsection{Abbruchbedingung}\label{subsec:Abbruchbedingung}
+\paragraph{Abbruchbedingung}\label{para:Abbruchbedingung}
 Damit der Algorithmus endet muss eine Abbruchbedingung definiert werden.
 Hierzu gibt es verschiedene Möglichkeiten die kombiniert werden können:
 \begin{itemize}
-    \item Abbruch, falls in den letzen $n$ Wiederholungen keine Verbesserung stattfand.
+    \item Abbruch, falls in den letzten $n$ Wiederholungen keine Verbesserung stattfand.
     \item Abbruch, falls $n$ Wiederholungen ausgeführt wurden.
     \item Abbruch, falls ein bestimmter Zielwert erreicht wurde.
 \end{itemize}
