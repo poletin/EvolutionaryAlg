@@ -12,12 +12,12 @@ der Setliste gestrichen wird.
     \begin{itemize}
         \item Die Dauer des Auftritts wird kürzer, dies hat sehr wahrscheinlich eine Bestrafung und 
             damit eine Reduzierung der Fitness zur Folge. 
-        \item Die Schwierigkeiten $s, s_{hoch}$, $ s_{tief}$ und $s_{holz}$ sinken ebenso. Dies sorgt allerdings 
+        \item Die Schwierigkeiten $s, s_{hoch}$, $ s_{tief}$ und $s_{holz}$ sinken ebenso. Dies führt allerdings 
             zu einer Steigerung der Fitness. 
     \end{itemize}
     \item Hinzufügen eines Stückes:
     \begin{itemize}
-        \item Die Dauer des Auftritts wird länger, auch dies hat eine Reduzierung der Fitness zu Folge.
+        \item Die Dauer des Auftritts wird länger, auch dies hat eine Reduzierung der Fitness zu Folge, falls die Dauer bereits das Maximum erreicht hat.
         \item Die Schwierigkeiten $s, s_{hoch}$, $ s_{tief}$ und $s_{holz}$ steigen ebenso, was auch zur Reduzierung 
             der Fitness führt. 
     \end{itemize}
@@ -44,8 +44,7 @@ Der Austausch eines Stückes auf der Setliste mit einem anderen, ist für das Ko
 da die Dauer nur um die Differenz der Stückdauer verändert wird und nicht wie im Fall eines Flips um die gesamte
 Länge eines Stückes. \\
 Der Algorithmus hat durch den Swap die Möglichkeit die Population zu verbessern oder zu verschlechtern. 
-Beide Fälle können sich positiv auf die Fitness des Endergebnisses auswirken. Aus diesem Grund 
-wird der Swap für das Konzertproblem sinnvoll eingesetzt. 
+Beide Fälle können sich positiv auf die Fitness des Endergebnisses auswirken. 
 
 \paragraph{Shuffel}
 Beim Shuffel werden alle Werte neu vermischt, daher sorgt auch der Shuffel für eine gleichbleibende Anzahl an Stücken.
@@ -54,7 +53,7 @@ Das bedeutet, dass diese Mutation eine starke Änderung des Genotyps zur Folge h
 
 Alle drei Mutationen haben ihre Berechtigung zur Lösung des Konzertproblems. Allerdings sollte 
 der Flip nicht so oft sattfinden wie der Swap, da dieser die Fitness positiver beeinflusst. 
-Dies kann mit hilfe von Wahrscheinlichkeiten erreicht werden. Eine Zufallszahl kann die Wahrscheinlichkeit 
+Dies kann mit Hilfe von Wahrscheinlichkeiten erreicht werden. Eine Zufallszahl kann die Wahrscheinlichkeit 
 für das Stattfinden einer Mutation bestimmen. 
 Als initiale Einstellung könnten die Wahrscheinlichkeiten wie folgt gewählt werden: 
 \begin{enumerate}

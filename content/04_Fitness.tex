@@ -2,10 +2,10 @@
 Die Fitnessfunktion soll die Stücke der Setliste so auswählen, dass:
 \begin{itemize}
     \item Die Dauer $d$ der Stücke \textbf{möglichst genau} der Auftrittszeit 120 Minuten entspricht.
-    \item Die allgemeine Schwierigkeit $s$ \textbf{möglichst minimiert} wird. Hierbei ist zu erwähnen, dass die hier
+    \item Die allgemeine Schwierigkeit $s$ \textbf{möglichst minimal} wird. Hierbei ist zu erwähnen, dass die hier
         angegebene Schwierigkeit nicht zwingend der Durchschnitt der Registerschwierigkeiten darstellt, denn
         beispielsweise im Bezug auf das Zusammenspiel kann die allgemeine Schwierigkeit höher sein.
-    \item Die Stimmung $m$ und die Bekanntheit $n$ \textbf{möglichst maximiert} wird.
+    \item Die Stimmung $m$ und die Bekanntheit $n$ \textbf{möglichst maximal} wird.
     \item Die Schwierigkeit für Hochblech $s_{hoch}$, Tiefblech $s_{tief}$ und Holzblasinstrumente $s_{holz}$ \textbf{möglichst ausgeglichen} ist.
 \end{itemize}
 Um die Fitness des Phenotyps zu bestimmen, müssen zunächst einige Basiswerte berechnet werden. Diese sind in \autoref{lst:basisWerte} beispielhaft implementiert.
@@ -13,7 +13,7 @@ Um die Fitness des Phenotyps zu bestimmen, müssen zunächst einige Basiswerte b
 Für die allgemeine Schwierigkeit sowie für die Schwierigkeiten der einzelnen Register, zeigt \autoref{eqn:basis} die Berechnungsformel. Hierbei werden alle Werte des
 Phenotyps addiert. Durch den Bruch werden die Werte zusätzlich auf einen Wert zwischen $0$ une $1$ normiert. Dies ist notwendig, 
 damit die verschiedenen Eigenschaften zunächst die gleiche Gewichtung besitzen. 
-Die Formeln für $m(x)$ und $n(x)$ sind identisch.
+Die Formeln für Stimmung $m(x)$ und Bekanntheit $n(x)$ sind identisch.
 \begin{equation}
     s(x) = \frac{\sum_{i=0}^{n} x_i * (10 - s(i)) }{n * 10}
     \label{eqn:basis}
@@ -21,7 +21,8 @@ Die Formeln für $m(x)$ und $n(x)$ sind identisch.
 
 Eine Eigenschaft und gleichzeitig eine Nebenbedingung ist die Dauer. Sie sollte möglichst der geforderten Auftrittszeit entsprechen. Wird die Auftrittszeit nicht erfüllt
 oder überschritten, soll sich dies negativ auf die Fitness des Phenotyps auswirken. Die Fitness soll nicht direkt auf 0 gesetzt werden, da
-Beispielsweise eine Setliste deren Dauer um eine Minute die geforderte Auftrittszeit unterschreitet besser sein kann als das Überschreiten von 10 Minuten.
+Beispielsweise eine Setliste deren Dauer um eine Minute die geforderte Auftrittszeit unterschreitet besser sein kann als eine Setliste, welche die Zeit mit weniger passenden Liedern 
+genau einhält.
 Durch die Negierung der Formel in \autoref{eqn:penalty} wird die Fitness reduziert. Auch in dieser Formel werden zunächst alle Differenzen zur geforderten
 Spielzeit aufaddiert. Die Bildung des Quadrats sorgt dafür, dass sowohl unterschreiten wie auch überschreiten
 positive Werte ergibt.

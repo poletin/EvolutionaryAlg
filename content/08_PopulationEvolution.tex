@@ -1,6 +1,6 @@
 \section{Population und Evolution}\label{sec:popEv}
 \paragraph{Initialisierung der Population}
-Die Initialisierung der Population kann entweder zufällig oder anhand von bereits vorhandenem Wissen.
+Die Initialisierung der Population kann entweder zufällig oder anhand von bereits vorhandenem Wissen erfolgen.
 In der Regel bietet es sich nicht an, die gesamte Population anhand von Wissen aufzubauen, da so
 wenig neue Lösungen gefunden werden.\\
 Dennoch wäre es in dieser Anwendung möglich einige vorhandene Setlisten in die Population einzustreuen und den Rest
@@ -8,7 +8,7 @@ anschließend mit zufälligen Werten zu füllen.
 
 \paragraph{Populationsgröße}
 Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer weiße werden Werte zwischen
-20 und 30 gewählt. Diese kann später via \textit{Trial-and-Error} und einem Prototypen optimiert werden.
+20 und 30 gewählt. Diese kann später durch Versuche mit einem Prototypen optimiert werden.
 
 \paragraph{Übersicht über den Algorithmus und die Evolution}
 
@@ -20,7 +20,7 @@ Die Populationsgröße sollte weder zu hoch noch zu niedrig sein. Typischer wei�
         kombiniert.
     \item Nach der Kombination folgt die Mutation, die zufällig eine der in \autoref{sec:mutation} vorgestellten
     Mutationen auswählt.
-    \item Der gesamte Algorithmus endet, wenn die Abbruchbedingung siehe \autoref{para:Abbruchbedingung} erfüllt ist.
+    \item Der gesamte Algorithmus endet, wenn die folgende Abbruchbedingung erfüllt ist.
 \end{itemize}
 
 \paragraph{Abbruchbedingung}\label{para:Abbruchbedingung}
@@ -32,12 +32,12 @@ Hierzu gibt es verschiedene Möglichkeiten die kombiniert werden können:
     \item Abbruch, falls ein bestimmter Zielwert erreicht wurde.
 \end{itemize}
 
-\autoref{lst:abbruch} zeit die Java-Implementierung einer Abbruchfunktion die alle Drei Möglichkeiten
-kombiniert. Die Maximale Anzahl an Wiederholungen wird durch die \textit{For-Schleife} eingehalten.
-Die beiden anderen Bedingungen werden innerhalb der Schleife überprüft.
-\lstinputlisting[
-    float = h,
-    floatplacement=H,
-    caption=Abbruchfunktion,
-    label=lst:abbruch
-]{abbruch.java}
+% \autoref{lst:abbruch} zeit die Java-Implementierung einer Abbruchfunktion die alle Drei Möglichkeiten
+% kombiniert. Die Maximale Anzahl an Wiederholungen wird durch die \textit{For-Schleife} eingehalten.
+% Die beiden anderen Bedingungen werden innerhalb der Schleife überprüft.
+% \lstinputlisting[
+%     float = h,
+%     floatplacement=H,
+%     caption=Abbruchfunktion,
+%     label=lst:abbruch
+% ]{abbruch.java}
